@@ -13,7 +13,7 @@ var express = require("express"),
 
 // Sobe o servidor HTTP na posta 3000
 app.listen(3000, function () {
-      console.log("Servidor está no ar.");
+      console.log("presentes");
 });
 
 // Define a pasta onde irão ficar as views
@@ -37,3 +37,10 @@ app.use(expressSession({
 
 // Carrega todas as scripts da pasta controller e routes
 load("controllers") .then("routes") .then("models")  .into(app);
+
+(async () => {
+    const db = require("./db");
+    console.log("começou");
+    const presentes = await db.selectpresentes();
+    console.log(presentes);
+})();
